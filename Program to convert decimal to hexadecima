@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+void decimal_to_hexadecimal(int decimal) {
+  int quotient, i=1, j, temp;
+  char hexadecimal[100];
+
+  quotient = decimal;
+  while (quotient != 0) {
+    temp = quotient % 16;
+    if (temp < 10)
+      hexadecimal[i++]= temp + 48;
+    else
+      hexadecimal[i++] = temp + 55;
+    quotient = quotient / 16;
+  }
+
+  printf("Equivalent hexadecimal value of decimal number %d: ", decimal);
+  for (j = i - 1; j > 0; j--)
+    printf("%c", hexadecimal[j]);
+  printf("\n");
+}
+
+int main() {
+  int decimal;
+  printf("Enter a decimal number: ");
+  scanf("%d", &decimal);
+  decimal_to_hexadecimal(decimal);
+  return 0;
+}
