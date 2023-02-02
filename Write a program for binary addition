@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+void binary_addition(int A[], int B[], int C[], int size) {
+  int carry=0, sum;
+  for(int i=size-1; i>=0; i--) {
+    sum = A[i] + B[i] + carry;
+    C[i] = sum % 2;
+    carry = sum / 2;
+  }
+}
+
+int main() {
+  int size, A[20], B[20], C[20];
+  printf("Enter the size of binary numbers: ");
+  scanf("%d", &size);
+  printf("Enter first binary number: ");
+  for(int i=0; i<size; i++)
+    scanf("%d", &A[i]);
+  printf("Enter second binary number: ");
+  for(int i=0; i<size; i++)
+    scanf("%d", &B[i]);
+  binary_addition(A, B, C, size);
+  printf("Sum of two binary numbers: ");
+  for(int i=0; i<size; i++)
+    printf("%d", C[i]);
+  printf("\n");
+  return 0;
+}
