@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
+int hexadecimal_to_decimal(char hex[]) {
+  int i, length, decimal=0;
+  for(i=0; hex[i]!='\0'; i++) {
+    if(hex[i]>='0' && hex[i]<='9')
+      decimal = decimal + (hex[i]-'0')*pow(16,length-1-i);
+    if(hex[i]>='A' && hex[i]<='F')
+      decimal = decimal + (hex[i]-55)*pow(16,length-1-i);
+    if(hex[i]>='a' && hex[i]<='f')
+      decimal = decimal + (hex[i]-87)*pow(16,length-1-i);
+  }
+  return decimal;
+}
+
+int main() {
+  char hex[100];
+  int decimal;
+  printf("Enter a hexadecimal number: ");
+  scanf("%s", hex);
+  decimal = hexadecimal_to_decimal(hex);
+  printf("Equivalent decimal value of hexadecimal number %s: %d\n", hex, decimal);
+  return 0;
+}
